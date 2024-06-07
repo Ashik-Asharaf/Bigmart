@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+</head>
+<body>
+<div class="table-responsive">
+    <h1> Student Details</h1>
+                      <table class="table table-bordered table-contextual">
+                        <thead >
+                        <tr>
+                            <th> ID </th>
+                            <th> Name </th>
+                            <th> Email Id </th>
+                            <th> Phone </th>
+                            <th> Subject </th>
+                            <th> Message </th>
+
+                          </tr>
+                        </thead>
+                          {% for i in data %}
+                        <tbody>
+                          <tr class="table-success">
+                            <td> {{i.id}} </td>
+                            <td> {{i.Name}} </td>
+                            <td> {{i.Email}} </td>
+                            <td> {{i.Phone}} </td>
+                            <td> {{i.Subject}} </td>
+                            <td> {{i.Message}} </td>
+                            <td>
+                                  <img src="{{i.Image.url}}" width = "100px" ,height="100px">
+                             </td>
+
+ <td>
+
+
+                             <td>
+                                  <a href="{% url 'delete_cont' cont_id=i.id %}">
+                                      <button type="button" class="btn btn-danger ">Delete</button>
+                                  </a>
+                              </td>
+                          </tr>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+
+</body>
+{% endblock %}
+</html>

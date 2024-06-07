@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="div1">
+    <h1 style="margin-top:40px;margin-bottom:20px;margin-left:250px;"><b>Add Products here</b> </h1>
+     <form class="forms-sample" method="post" action="{% url 'save_product' %}" enctype="multipart/form-data" >
+         {% csrf_token %}
+       <div class="form-group , ip1" style="margin-bottom:45px;">
+                        <label for="exampleSelectGender">Category</label>
+                        <select class="form-control,ip3" id="exampleSelectGender" name="Category" >
+                          {% for d in cat %}
+                          <option>{{d.Cname}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+        <input type="text" placeholder="Add Product" name="pname" class="ip1"><br><br>
+        <input type="text" placeholder="Price" name="price" class="ip1"><br><br>
+        <textarea name="description" id="" cols="101" rows="10" placeholder="Description" style=" margin-left:50px;"></textarea><br><br>
+        <input type="file" placeholder="Add Image" name="image" class="ip2" style=" margin-left:50px;" ><br><br>
+        <button type="submit" style=" margin-left:300px; background-color:#FF3D00;
+        width:170px;height:40px;border:0px;border-radius:5px;color:white;"><b>Submit</b></button>
+    </form>
+
+</div>
+
+<style>
+.div1{
+width:800px;
+height:540px;
+border:solid 2px grey;
+margin-top:10px;
+border-radius:5px;
+}
+    .ip1{
+    width:720px;
+    height:45px;
+    margin-left:50px;
+    }
+    .ip3{
+    width:500px;
+    }
+</style>
+</body>
+{% endblock %}
+</html>

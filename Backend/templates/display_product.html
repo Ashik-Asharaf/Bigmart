@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+</head>
+<body>
+<div class="table-responsive">
+    <h1> Student Details</h1>
+                      <table class="table table-bordered table-contextual">
+                        <thead >
+                        <tr>
+                            <th> ID </th>
+                            <th> CName </th>
+                            <th> ProductName </th>
+                            <th> Price </th>
+                            <th> Description </th>
+                            <th> Image </th>
+
+                          </tr>
+                        </thead>
+                          {% for i in data %}
+                        <tbody>
+                          <tr class="table-success">
+                            <td> {{i.id}} </td>
+                            <td> {{i.Category}} </td>
+                            <td> {{i.ProductName}} </td>
+                            <td> {{i.Price}} </td>
+                            <td> {{i.Description}} </td>
+                            <td>
+                                  <img src="{{i.ProductImage.url}}" width = "100px" ,height="100px">
+                             </td>
+
+                            <td>
+                                <a href="{% url 'edit_product' pro_id=i.id %}">
+                                <button type="button" class="btn btn-info btn-rounded ">Edit</button></a>
+                            </td>
+                              <td>
+                                  <a href="{% url 'delete_product' pro_id=i.id %}">
+                                      <button type="button" class="btn btn-danger ">Delete</button>
+                                  </a>
+                              </td>
+                          </tr>
+
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+
+</body>
+{% endblock %}
+</html>
